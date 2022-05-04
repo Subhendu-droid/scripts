@@ -19,8 +19,8 @@ START=$(date +"%s")
 export CONFIG_PATH=$PWD/arch/arm64/configs/X00P_defconfig
 PATH="${PWD}/clang/bin:${PWD}/gcc/bin:${PWD}/gcc32/bin:${PATH}"
 export ARCH=arm64
-export KBUILD_BUILD_USER="danascape"
-export KBUILD_BUILD_HOST="StormCI"
+export KBUILD_BUILD_USER="JARVIS"
+export KBUILD_BUILD_HOST="JARVIS-CI"
 
 # Send info to channel
 function sendinfo() {
@@ -28,7 +28,7 @@ function sendinfo() {
 		-d chat_id="$chat_id" \
 		-d "disable_web_page_preview=true" \
 		-d "parse_mode=html" \
-		-d text="<b>• StormbreakerKernel •</b>%0ABuild started on <code>StormCI</code>%0AFor device <b>Zenfone Max M1</b> (X00P)%0Abranch <code>$(git rev-parse --abbrev-ref HEAD)</code>(master)%0AUnder commit <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0AUsing compiler: <code>$(${GCC}gcc --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')</code>%0AStarted on <code>$(date)</code>%0A<b>Build Status:</b> #Test"
+		-d text="<b>• StormbreakerKernel •</b>%0ABuild started on <code>JARVIS-CI</code>%0AFor device <b>Zenfone Max M1</b> (X00P)%0Abranch <code>$(git rev-parse --abbrev-ref HEAD)</code>(master)%0AUnder commit <code>$(git log --pretty=format:'"%h : %s"' -1)</code>%0AUsing compiler: <code>$(${GCC}gcc --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')</code>%0AStarted on <code>$(date)</code>%0A<b>Build Status:</b> #Test"
 }
 
 # Push kernel to channel
@@ -65,7 +65,7 @@ function compile() {
 # Zipping
 function zip() {
 	cd AnyKernel3 || exit 1
-	zip -r9 Stormbreaker-X00P-${TANGGAL}.zip *
+	zip -r9 JARVIS-X00P-${TANGGAL}.zip *
 	cd ..
 }
 sendinfo
